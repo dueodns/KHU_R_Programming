@@ -1,6 +1,8 @@
 # Installing packages
 install.packages('ggplot2')
 
+print('hello')
+
 # Import packages
 library(ggplot2)
 
