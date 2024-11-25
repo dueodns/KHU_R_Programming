@@ -1,8 +1,6 @@
 # Installing packages
 install.packages('ggplot2')
 
-print('hello')
-
 # Import packages
 library(ggplot2)
 
@@ -18,21 +16,28 @@ seoul.temp <- read.csv('./data/seoul_temp_precip.csv')
 head(seoul.temp)
 
 # Slice August Temperature
-temp_aug <- seoul.temp[seoul.temp$month == 8, c('year', 'temperature')]
+temp_aug <- seoul.temp[seoul.temp$month == 8,
+                       c('year', 'temperature')]
 head(temp_aug)
+
+par(mar=c(1,1,1,1))
 
 ### Line Graph ###
 # Conventional way of plotting
 plot(temp_aug, 
      type='b', 
-     main='August Tempeature (1954-2023)'
+     main='August Temperature (1954-2023)',
+     xlab='month',
+     ylab='temperature'
      )
 
 # You can specify x and y axes. 
 plot(x=temp_aug$year, 
      y=temp_aug$temperature, 
      type='b', 
-     main='August Tempeature (1954-2023)'
+     main='August Tempeature (1954-2023)',
+     xlab='month',
+     ylab='temperature'
      )
 
 # Same plot using ggplot
@@ -108,7 +113,6 @@ ggplot(data=mean.temp, mapping=aes(x=year, y=temperature)) +
 
 # Export to a CSV file
 write.csv(mean.temp, file='./data/mean_teperature.csv', row.names=FALSE)
-
 
 ### Plot Maps ###
 install.packages('sf')
